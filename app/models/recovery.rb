@@ -5,7 +5,7 @@ class Recovery < ActiveRecord::Base
   belongs_to :created_by, class_name: 'User'
   belongs_to :realisation_statement
 
-  scope :realised, where(realise_flag: true)
+  scope :realised, -> { where(realise_flag: true) }
 
   before_save :set_seq, on: :create
 

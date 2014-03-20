@@ -30,7 +30,7 @@ class LoanModification < ActiveRecord::Base
   format :old_initial_draw_date, with: QuickDateFormatter
   format :old_maturity_date, with: QuickDateFormatter
 
-  scope :desc, order('date_of_change DESC, id DESC')
+  scope :desc, -> { order('date_of_change DESC, id DESC') }
 
   def change_type
     ChangeType.find(change_type_id)

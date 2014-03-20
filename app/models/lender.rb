@@ -26,7 +26,7 @@ class Lender < ActiveRecord::Base
   validates_presence_of :primary_contact_name
   validates_presence_of :primary_contact_phone
 
-  scope :order_by_name, order(:name)
+  scope :order_by_name, -> { order(:name) }
   scope :active, -> { where(disabled: false) }
 
   def activate!

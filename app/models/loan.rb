@@ -60,33 +60,33 @@ class Loan < ActiveRecord::Base
   has_many :ineligibility_reasons, class_name: 'LoanIneligibilityReason'
   has_many :state_changes, -> { order(:modified_at) }, class_name: 'LoanStateChange'
 
-  scope :offered,         where(state: Loan::Offered)
-  scope :demanded,        where(state: Loan::Demanded)
-  scope :lender_demanded, where(state: Loan::LenderDemand)
-  scope :not_progressed,  where(state: [Loan::Eligible, Loan::Completed, Loan::Incomplete])
-  scope :guaranteed,      where(state: Loan::Guaranteed)
-  scope :recovered,       where(state: Loan::Recovered)
+  scope :offered,         -> { where(state: Loan::Offered) }
+  scope :demanded,        -> { where(state: Loan::Demanded) }
+  scope :lender_demanded, -> { where(state: Loan::LenderDemand) }
+  scope :not_progressed,  -> { where(state: [Loan::Eligible, Loan::Completed, Loan::Incomplete]) }
+  scope :guaranteed,      -> { where(state: Loan::Guaranteed) }
+  scope :recovered,       -> { where(state: Loan::Recovered) }
 
-  scope :correctable, where(state: [Loan::Guaranteed, Loan::LenderDemand, Loan::Demanded])
-  scope :recoverable, where(state: [Loan::Settled, Loan::Recovered, Loan::Realised])
+  scope :correctable, -> { where(state: [Loan::Guaranteed, Loan::LenderDemand, Loan::Demanded]) }
+  scope :recoverable, -> { where(state: [Loan::Settled, Loan::Recovered, Loan::Realised]) }
 
-  scope :last_updated_between, lambda { |start_date, end_date|
+  scope :last_updated_between, ->(start_date, end_date) {
     where("updated_at >= ? AND updated_at <= ?", start_date.to_time, end_date.to_time)
   }
 
-  scope :maturity_date_between, lambda { |start_date, end_date|
+  scope :maturity_date_between, ->(start_date, end_date) {
     where("maturity_date >= ? AND maturity_date <= ?", start_date, end_date)
   }
 
-  scope :facility_letter_date_between, lambda { |start_date, end_date|
+  scope :facility_letter_date_between, ->(start_date, end_date) {
     where("facility_letter_date >= ? AND facility_letter_date <= ?", start_date, end_date)
   }
 
-  scope :borrower_demanded_date_between, lambda { |start_date, end_date|
+  scope :borrower_demanded_date_between, ->(start_date, end_date) {
     where("borrower_demanded_on >= ? AND borrower_demanded_on <= ?", start_date, end_date)
   }
 
-  scope :by_reference, lambda { |reference|
+  scope :by_reference, ->(reference) {
     where("reference LIKE ?", "%#{reference}%")
   }
 

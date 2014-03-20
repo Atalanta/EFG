@@ -34,11 +34,10 @@ class LendingLimit < ActiveRecord::Base
   format :ends_on, with: QuickDateFormatter
   format :starts_on, with: QuickDateFormatter
 
-  default_scope order('ends_on DESC, allocation_type_id DESC')
+  default_scope { order('ends_on DESC, allocation_type_id DESC') }
+  scope :active, -> { where(active: true) }
 
   delegate :euro_conversion_rate, to: :phase
-
-  scope :active, where(active: true)
 
   def self.current
     today = Date.current

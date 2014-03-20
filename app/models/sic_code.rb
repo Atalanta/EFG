@@ -8,9 +8,8 @@ class SicCode < ActiveRecord::Base
   validates_inclusion_of :eligible, in: [true, false]
   validates_inclusion_of :public_sector_restricted, in: [true, false]
 
-  default_scope order(:code)
-
-  scope :active, where(active: true)
+  default_scope { order(:code) }
+  scope :active, -> { where(active: true) }
 
   format :state_aid_threshold, with: MoneyFormatter.new('EUR')
 end
