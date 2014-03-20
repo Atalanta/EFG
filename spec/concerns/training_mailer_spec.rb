@@ -8,7 +8,7 @@ describe TrainingMailer do
         include TrainingMailer
 
         def test
-          mail(subject: 'Test Mail')
+          mail(subject: 'Test Mail', body: '')
         end
       end
     end
