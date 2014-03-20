@@ -15,9 +15,7 @@ class Recovery < ActiveRecord::Base
 
   validate :validate_scheme_fields
   validate do
-    return unless recovered_on && loan
-
-    if recovered_on < loan.settled_on
+    if loan && recovered_on && recovered_on < loan.settled_on
       errors.add(:recovered_on, 'must not be before the loan was settled')
     end
   end
