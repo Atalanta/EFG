@@ -30,7 +30,7 @@ describe LoanStateTransition do
 
       expect {
         klass.new(loan)
-      }.to_not raise_error(LoanStateTransition::IncorrectLoanState)
+      }.not_to raise_error
     end
 
     it 'is allowed to have a nil from state' do
@@ -39,7 +39,7 @@ describe LoanStateTransition do
 
       expect {
         klass.new(loan)
-      }.to_not raise_error(LoanStateTransition::IncorrectLoanState)
+      }.not_to raise_error
     end
 
     it "should raise an IncorrectLoanState error if the loan isn't in the from state" do

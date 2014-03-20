@@ -15,7 +15,7 @@ describe LoanReference do
       %w(ABC1234+01 ABC1234-01).each do |string|
         expect {
           LoanReference.new(string)
-        }.to_not raise_error(InvalidLoanReference), "#{string} should be a valid legacy loan reference"
+        }.not_to raise_error
       end
     end
   end
