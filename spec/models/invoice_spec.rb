@@ -85,7 +85,7 @@ describe Invoice do
       invoice.save!
 
       another_invoice = FactoryGirl.build(:invoice)
-      another_invoice.stub!(:random_xref).and_return(invoice.xref, '789012-INV')
+      another_invoice.stub(:random_xref).and_return(invoice.xref, '789012-INV')
 
       another_invoice.save!
       another_invoice.xref.should == '789012-INV'

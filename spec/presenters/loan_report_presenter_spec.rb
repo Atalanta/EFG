@@ -70,7 +70,7 @@ describe LoanReportPresenter do
     let(:user) { FactoryGirl.create(:lender_user) }
     let(:loan_report) { double('LoanReport') }
     let(:presenter) { LoanReportPresenter.new(user) }
-    before { presenter.stub!(:report).and_return(loan_report) }
+    before { presenter.stub(:report).and_return(loan_report) }
 
     it "delegates #count" do
       loan_report.should_receive(:count).and_return(45)
@@ -130,7 +130,7 @@ describe LoanReportPresenter do
     context "with a users's 'lender' that can access all loan schemes" do
       let(:lender) { double('lender', :can_access_all_loan_schemes? => true)}
       let(:user) { FactoryGirl.build(:lender_user) }
-      before { user.stub!(:lender).and_return(lender) }
+      before { user.stub(:lender).and_return(lender) }
 
       it "allows loan type selection" do
         presenter.should have_loan_type_selection
@@ -140,7 +140,7 @@ describe LoanReportPresenter do
     context "with a user's 'lender' that can't access all loan schemes" do
       let(:lender) { double('lender', :can_access_all_loan_schemes? => false)}
       let(:user) { FactoryGirl.build(:lender_user) }
-      before { user.stub!(:lender).and_return(lender) }
+      before { user.stub(:lender).and_return(lender) }
 
       it "doesn't allow loan type selection" do
         presenter.should_not have_loan_type_selection
@@ -172,7 +172,7 @@ describe LoanReportPresenter do
       end
 
       it "removes any lender_ids that the user can't access" do
-        user.stub!(:lender_ids).and_return([lender1.id, lender2.id])
+        user.stub(:lender_ids).and_return([lender1.id, lender2.id])
 
         presenter.lender_ids = [lender1.id, lender3.id]
         presenter.report.lender_ids.should == [lender1.id]

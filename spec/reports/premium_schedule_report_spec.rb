@@ -523,12 +523,12 @@ describe PremiumScheduleReport do
       it "should log the output and the exception and the loan" do
         loan = double(inspect: '#<Loan id:1>')
         row = double(loan: loan)
-        row.stub!(:to_csv).and_raise(ZeroDivisionError)
-        PremiumScheduleReportRow.stub!(:from_loans).and_return([row])
+        row.stub(:to_csv).and_raise(ZeroDivisionError)
+        PremiumScheduleReportRow.stub(:from_loans).and_return([row])
 
         logger = double
         logger.should_receive(:error).with("PremiumScheduleReport Error: ZeroDivisionError reporting on #<Loan id:1>")
-        Rails.stub!(:logger).and_return(logger)
+        Rails.stub(:logger).and_return(logger)
 
         premium_schedule_report.to_csv
       end
