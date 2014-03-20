@@ -170,7 +170,7 @@ describe BulkLendingLimits do
       end
 
       lending_limits.map(&:lender).should =~ [lender2, lender3]
-      lending_limits.count(&:active?).should == 1
+      lending_limits.to_a.count(&:active?).should == 1
     end
 
     it "should create lending limits for selected lenders only" do
