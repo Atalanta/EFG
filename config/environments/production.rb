@@ -72,4 +72,6 @@ EFG::Application.configure do
   }
 
   config.action_mailer.delivery_method = :ses
+
+  config.eager_load = true
 end
