@@ -45,7 +45,7 @@ class Loan < ActiveRecord::Base
   belongs_to :invoice
   belongs_to :ded_code, foreign_key: 'dti_ded_code', primary_key: 'code'
   belongs_to :sic, class_name: 'SicCode', foreign_key: 'sic_code', primary_key: 'code'
-  has_many :premium_schedules, inverse_of: :loan, order: :seq
+  has_many :premium_schedules, -> { order(:seq) }, inverse_of: :loan
   has_one :initial_draw_change
   has_one :transferred_from, class_name: 'Loan', foreign_key: 'id', primary_key: 'transferred_from_id'
   has_many :data_corrections
@@ -53,12 +53,12 @@ class Loan < ActiveRecord::Base
   has_many :loan_changes
   has_many :loan_modifications
   has_many :loan_realisations, foreign_key: 'realised_loan_id'
-  has_many :loan_realisations_post_claim_limit, class_name: 'LoanRealisation', foreign_key: 'realised_loan_id', conditions: { post_claim_limit: true }
-  has_many :loan_realisations_pre_claim_limit,  class_name: 'LoanRealisation', foreign_key: 'realised_loan_id', conditions: { post_claim_limit: false }
+  has_many :loan_realisations_post_claim_limit, -> { where(post_claim_limit: true) }, class_name: 'LoanRealisation', foreign_key: 'realised_loan_id'
+  has_many :loan_realisations_pre_claim_limit, -> { where(post_claim_limit: false) }, class_name: 'LoanRealisation', foreign_key: 'realised_loan_id'
   has_many :recoveries
   has_many :loan_securities
   has_many :ineligibility_reasons, class_name: 'LoanIneligibilityReason'
-  has_many :state_changes, class_name: 'LoanStateChange', order: :modified_at
+  has_many :state_changes, -> { order(:modified_at) }, class_name: 'LoanStateChange'
 
   scope :offered,         where(state: Loan::Offered)
   scope :demanded,        where(state: Loan::Demanded)

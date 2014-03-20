@@ -8,10 +8,10 @@ class Lender < ActiveRecord::Base
   has_many :expert_users, through: :experts, source: :user
   has_many :lender_admins
   has_many :lending_limits
-  has_many :active_lending_limits, class_name: 'LendingLimit', conditions: { active: true }
+  has_many :active_lending_limits, -> { where(active: true) }, class_name: 'LendingLimit'
   has_many :lender_users
   has_many :loans
-  has_many :users, class_name: 'User', conditions: { type: %w(LenderAdmin LenderUser) }
+  has_many :users, -> { where(type: %w(LenderAdmin LenderUser)) }, class_name: 'User'
 
   attr_accessible :can_use_add_cap, :name,
     :organisation_reference_code, :primary_contact_email,

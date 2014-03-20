@@ -20,9 +20,7 @@ class LendingLimit < ActiveRecord::Base
 
   has_many :loans
 
-  has_many :loans_using_lending_limit,
-           class_name: "Loan",
-           conditions: ["loans.state IN (?)", USAGE_LOAN_STATES]
+  has_many :loans_using_lending_limit, -> { where("loans.state IN (?)", USAGE_LOAN_STATES) }, class_name: "Loan"
 
   validates_presence_of :lender_id, strict: true
   validates_presence_of :allocation, :name, :ends_on, :starts_on
