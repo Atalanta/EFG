@@ -27,17 +27,15 @@ class LoanAuditReport
 
   def loans
     scope = Loan.select(
-        [
-          'loans.*',
-          'loan_state_changes.event_id AS loan_state_change_event_id',
-          'loan_state_changes.state AS loan_state_change_to_state',
-          'loan_state_changes.modified_at AS loan_state_change_modified_at',
-          'first_loan_change.date_of_change AS loan_initial_draw_date',
-          '(SELECT username FROM users WHERE id = loans.created_by_id) AS loan_created_by',
-          '(SELECT username FROM users WHERE id = loans.modified_by_id) AS loan_modified_by',
-          '(SELECT username FROM users WHERE id = loan_state_changes.modified_by_id) AS loan_state_change_modified_by',
-          '(SELECT organisation_reference_code FROM lenders WHERE id = loans.lender_id) AS lender_reference_code'
-        ].join(', ')
+        'loans.*',
+        'loan_state_changes.event_id AS loan_state_change_event_id',
+        'loan_state_changes.state AS loan_state_change_to_state',
+        'loan_state_changes.modified_at AS loan_state_change_modified_at',
+        'first_loan_change.date_of_change AS loan_initial_draw_date',
+        '(SELECT username FROM users WHERE id = loans.created_by_id) AS loan_created_by',
+        '(SELECT username FROM users WHERE id = loans.modified_by_id) AS loan_modified_by',
+        '(SELECT username FROM users WHERE id = loan_state_changes.modified_by_id) AS loan_state_change_modified_by',
+        '(SELECT organisation_reference_code FROM lenders WHERE id = loans.lender_id) AS lender_reference_code'
       ).joins("RIGHT OUTER JOIN loan_state_changes ON loans.id = loan_state_changes.loan_id")
        .joins("LEFT JOIN loan_modifications AS first_loan_change ON loans.id = first_loan_change.loan_id AND first_loan_change.seq = 0")
        .where("loans.modified_by_legacy_id != 'migration' OR loans.modified_by_legacy_id IS NULL")
@@ -63,7 +61,7 @@ class LoanAuditReport
   end
 
   def count
-    @count ||= loans.count
+    @count ||= loans.except(:select).select('id').count
   end
 
   def event_name

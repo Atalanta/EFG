@@ -16,7 +16,7 @@ class PremiumScheduleReport
   validate :all_the_things
 
   def count
-    loans.count
+    loans.except(:select).select('id').count
   end
 
   def finish_on=(value)
@@ -29,7 +29,7 @@ class PremiumScheduleReport
 
   def loans
     scope = Loan
-      .select([
+      .select(
         'loans.id',
         'loans.reference',
         'loans.premium_rate',
@@ -37,8 +37,7 @@ class PremiumScheduleReport
         'first_loan_change.date_of_change AS draw_down_date',
         'lenders.organisation_reference_code AS lender_organisation',
         'premium_schedules.id AS premium_schedule_id',
-        'premium_schedules.calc_type AS premium_schedule_calc_type'
-      ].join(', '))
+        'premium_schedules.calc_type AS premium_schedule_calc_type')
       .joins(:lender, :premium_schedules, :loan_modifications)
       .joins('INNER JOIN loan_modifications AS first_loan_change
                 ON first_loan_change.loan_id = loans.id AND first_loan_change.seq = 0')

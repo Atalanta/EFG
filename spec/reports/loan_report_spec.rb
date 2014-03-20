@@ -132,7 +132,7 @@ describe LoanReport do
       it "returns no loans when specified created by user does not belong to one of the specified lenders" do
         loan_report.lender_ids = [loan1.lender_id]
         loan_report.created_by_id = user2.id
-        loan_report.loans.should be_empty
+        loan_report.loans.to_a.should be_empty
       end
     end
 
