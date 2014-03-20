@@ -43,7 +43,7 @@ class LendingLimit < ActiveRecord::Base
   def self.current
     today = Date.current
 
-    scoped.where("starts_on <= ? AND ends_on >= ?", today, today)
+    where("starts_on <= ? AND ends_on >= ?", today, today)
   end
 
   def allocation_type

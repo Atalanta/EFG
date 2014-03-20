@@ -60,7 +60,7 @@ class LoanReport
 
   private
   def scope
-    scope = Loan.scoped
+    scope = Loan.all
     scope = scope.where('loans.state IN (?)', states) if states.present?
 
     if loan_types.present?

@@ -4,11 +4,11 @@ class CfeUserLender
   end
 
   def loans
-    Loan.scoped
+    Loan.all
   end
 
   def users
-    CfeUser.scoped
+    CfeUser.all
   end
 
   def can_access_all_loan_schemes?

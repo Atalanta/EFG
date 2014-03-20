@@ -6,7 +6,7 @@ class CfeAdmin < User
   end
 
   def lenders
-    Lender.scoped
+    Lender.all
   end
 
   def lender_ids

@@ -1,10 +1,10 @@
 class AuditorUserLender
   def loans
-    Loan.scoped
+    Loan.all
   end
 
   def users
-    AuditorUser.scoped
+    AuditorUser.all
   end
 
   def can_access_all_loan_schemes?

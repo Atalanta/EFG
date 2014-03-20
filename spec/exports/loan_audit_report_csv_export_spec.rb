@@ -3,7 +3,7 @@ require 'csv'
 
 describe LoanAuditReportCsvExport do
   describe ".header" do
-    let(:loan_audit_report_csv_export) { LoanAuditReportCsvExport.new(Loan.scoped) }
+    let(:loan_audit_report_csv_export) { LoanAuditReportCsvExport.new(Loan.all) }
 
     let(:header) { CSV.parse(loan_audit_report_csv_export.first).first }
 
@@ -49,7 +49,7 @@ describe LoanAuditReportCsvExport do
 
     let(:loan_audit_report_mock) { double(LoanAuditReportCsvRow, to_a: row_mock) }
 
-    let(:loan_audit_report_csv_export) { LoanAuditReportCsvExport.new(Loan.scoped) }
+    let(:loan_audit_report_csv_export) { LoanAuditReportCsvExport.new(Loan.all) }
 
     let(:row_mock) { Array.new(loan_audit_report_csv_export.fields.size) }
 

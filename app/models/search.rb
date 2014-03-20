@@ -64,7 +64,7 @@ class Search
   def results
     return if !valid?
 
-    query = Loan.scoped
+    query = Loan.all
 
     attributes.each do |key, value|
       condition = case key

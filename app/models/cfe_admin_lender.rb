@@ -1,6 +1,6 @@
 class CfeAdminLender
   def users
-    CfeAdmin.scoped
+    CfeAdmin.all
   end
 
   def can_access_all_loan_schemes?
