@@ -16,7 +16,7 @@ class LoanTransfer::LegacySflg < LoanTransfer::Base
       loan_modifications: { date_of_change: initial_draw_date },
       reference: reference,
       state: ALLOWED_LOAN_TRANSFER_STATES
-    ).first(readonly: false)
+    ).readonly(false).first
   end
 
   def save
