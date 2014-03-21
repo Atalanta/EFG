@@ -13,7 +13,7 @@ gem 'jquery-rails', "2.2.1"
 gem 'less-rails', '2.2.6'
 gem 'lograge', '0.1.2'
 gem 'money', '5.1.1'
-gem 'mysql2', '0.3.11'
+gem 'mysql2', '0.3.16'
 gem 'passphrase_entropy', git: 'https://github.com/alphagov/passphrase_entropy.git'
 gem 'plek', '0.3.0'
 gem 'prawn', '0.12.0'
