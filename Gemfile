@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem "bourbon", '2.1.1'
-gem "builder", '3.0.0'
+gem "builder", '3.1.4'
 gem 'aws-ses', :require => 'aws/ses' # Needed by exception_notification
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'canable', '0.3.0'
@@ -19,20 +19,19 @@ gem 'plek', '0.3.0'
 gem 'prawn', '0.12.0'
 gem 'progressbar', '0.11.0'
 gem 'rack-ssl-enforcer'
-gem 'rails', '3.2.18'
-gem 'simple_form', '2.0.4'
+gem 'rails', '4.1.5'
+gem 'simple_form', '3.0.2'
 gem 'statsd-ruby', '1.0.0'
 gem 'twitter-bootstrap-rails', '2.2.0'
 gem 'uk_postcode'
 gem 'unicorn', '4.6.2'
 gem 'useragent', '0.4.16'
-gem 'validate_as_email', '1.0.3'
 gem 'weekdays', '1.0.2'
 gem 'whenever', '0.9.2', :require => false
 gem 'will_paginate', '3.0.5'
 
 group :assets do
-  gem 'sass-rails', '3.2.5'
+  gem 'sass-rails', '4.0.2'
   gem 'therubyracer', '0.12'
   gem 'uglifier', '1.2.4'
 end
@@ -59,7 +58,6 @@ group :test do
 end
 
 group :extract do
-  # gem "data-anonymization", :path => "../data-anonymization"
-  gem "data-anonymization", "0.5.3"
+  gem "data-anonymization", "0.6.5"
   gem "sqlite3", "1.3.6"
 end
