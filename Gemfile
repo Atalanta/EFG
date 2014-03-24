@@ -9,7 +9,7 @@ gem 'devise', '3.2.4'
 gem "devise-encryptable", "0.1.2"
 gem 'protected_attributes'
 gem "devise_security_extension", "0.7.2"
-gem 'exception_notification', '3.0.1'
+gem 'exception_notification', '4.0.1'
 gem 'jquery-rails', "2.2.1"
 gem 'less-rails', '2.2.6'
 gem 'lograge', '0.1.2'
