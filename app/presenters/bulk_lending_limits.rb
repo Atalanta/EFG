@@ -1,5 +1,3 @@
-require 'active_model/model'
-
 class BulkLendingLimits
   include ActiveModel::Model
   include ActiveModel::MassAssignmentSecurity

@@ -1,5 +1,3 @@
-require 'active_model/model'
-
 class UsernamesReminder
   include ActiveModel::Model
 

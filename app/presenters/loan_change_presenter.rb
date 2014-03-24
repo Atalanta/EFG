@@ -1,5 +1,3 @@
-require 'active_model/model'
-
 class LoanChangePresenter
   extend  ActiveModel::Callbacks
   extend  ActiveModel::Naming

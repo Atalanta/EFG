@@ -1,5 +1,3 @@
-require 'active_model/model'
-
 class LoanReportPresenter
   class Invalid < RuntimeError
     def initialize(loan_report)

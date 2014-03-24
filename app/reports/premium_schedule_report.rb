@@ -1,4 +1,3 @@
-require 'active_model/model'
 require 'csv'
 
 class PremiumScheduleReport

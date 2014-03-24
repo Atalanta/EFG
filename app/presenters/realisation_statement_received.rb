@@ -1,5 +1,3 @@
-require 'active_model/model'
-
 class RealisationStatementReceived
   PERIOD_COVERED_QUARTERS = RealisationStatement::PERIOD_COVERED_QUARTERS
 

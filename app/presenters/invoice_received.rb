@@ -1,5 +1,3 @@
-require 'active_model/model'
-
 class InvoiceReceived
   PERIOD_COVERED_QUARTERS = Invoice::PERIOD_COVERED_QUARTERS
 

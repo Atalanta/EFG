@@ -1,5 +1,3 @@
-require 'active_model/model'
-
 class AskCfe
   TO_EMAIL = ::EFG::Application.config.cfe_support_email
 

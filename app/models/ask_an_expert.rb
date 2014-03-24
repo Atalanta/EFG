@@ -1,5 +1,3 @@
-require 'active_model/model'
-
 class AskAnExpert
   include ActiveModel::Model
 
