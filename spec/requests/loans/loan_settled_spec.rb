@@ -120,11 +120,11 @@ describe "loan settled" do
 
     visit(new_invoice_path)
 
-    select 'Hayes Inc', from: 'invoice[lender_id]'
-    fill_in 'invoice[reference]', with: '2006-SADHJ'
-    select 'December', from: 'invoice[period_covered_quarter]'
-    fill_in 'invoice[period_covered_year]', with: '2011'
-    fill_in 'invoice[received_on]', with: '06/01/2012'
+    select 'Hayes Inc', from: 'invoice_received[lender_id]'
+    fill_in 'invoice_received[reference]', with: '2006-SADHJ'
+    select 'December', from: 'invoice_received[period_covered_quarter]'
+    fill_in 'invoice_received[period_covered_year]', with: '2011'
+    fill_in 'invoice_received[received_on]', with: '06/01/2012'
 
     click_button 'Select Loans'
     click_button 'Settle Loans'
@@ -137,11 +137,11 @@ describe "loan settled" do
 
     visit(new_invoice_path)
 
-    select 'Hayes Inc', from: 'invoice[lender_id]'
-    fill_in 'invoice[reference]', with: '2006-SADHJ'
-    select 'December', from: 'invoice[period_covered_quarter]'
-    fill_in 'invoice[period_covered_year]', with: '2011'
-    fill_in 'invoice[received_on]', with: '06/01/2012'
+    select 'Hayes Inc', from: 'invoice_received[lender_id]'
+    fill_in 'invoice_received[reference]', with: '2006-SADHJ'
+    select 'December', from: 'invoice_received[period_covered_quarter]'
+    fill_in 'invoice_received[period_covered_year]', with: '2011'
+    fill_in 'invoice_received[received_on]', with: '06/01/2012'
 
     click_button 'Select Loans'
 
@@ -151,11 +151,11 @@ describe "loan settled" do
   private
 
   def fill_in_valid_details
-    select 'Hayes Inc', from: 'invoice[lender_id]'
-    fill_in 'invoice[reference]', with: '2006-SADHJ'
-    select 'December', from: 'invoice[period_covered_quarter]'
-    fill_in 'invoice[period_covered_year]', with: '2011'
-    fill_in 'invoice[received_on]', with: '06/01/2012'
+    select 'Hayes Inc', from: 'invoice_received[lender_id]'
+    fill_in 'invoice_received[reference]', with: '2006-SADHJ'
+    select 'December', from: 'invoice_received[period_covered_quarter]'
+    fill_in 'invoice_received[period_covered_year]', with: '2011'
+    fill_in 'invoice_received[received_on]', with: '06/01/2012'
   end
 
 end

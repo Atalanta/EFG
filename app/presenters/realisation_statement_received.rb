@@ -26,10 +26,6 @@ class RealisationStatementReceived
     end
   end
 
-  def self.name
-    RealisationStatement.name
-  end
-
   def lender_id
     lender && lender.id
   end

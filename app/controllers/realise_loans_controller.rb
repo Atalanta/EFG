@@ -13,7 +13,7 @@ class RealiseLoansController < ApplicationController
   end
 
   def select_loans
-    @realisation_statement = RealisationStatementReceived.new(params[:realisation_statement])
+    @realisation_statement = RealisationStatementReceived.new(params[:realisation_statement_received])
 
     if @realisation_statement.invalid?(:details)
       render :new and return
@@ -30,7 +30,7 @@ class RealiseLoansController < ApplicationController
   end
 
   def create
-    @realisation_statement = RealisationStatementReceived.new(params[:realisation_statement])
+    @realisation_statement = RealisationStatementReceived.new(params[:realisation_statement_received])
     @realisation_statement.creator = current_user
 
     if @realisation_statement.save

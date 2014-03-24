@@ -46,7 +46,7 @@ describe RealiseLoansController do
       before do
         sign_in(current_user)
         dispatch(
-          realisation_statement: {
+          realisation_statement_received: {
             lender_id: lender.id,
             reference: '1',
             period_covered_quarter: "June",

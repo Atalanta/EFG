@@ -93,11 +93,11 @@ describe 'Realise loans' do
   end
 
   it 'should validate loans have been selected' do
-    select lender1.name, from: 'realisation_statement_lender_id'
-    fill_in 'realisation_statement_reference', with: "ABC123"
-    select 'March', from: 'realisation_statement_period_covered_quarter'
-    fill_in 'realisation_statement_period_covered_year', with: '2011'
-    fill_in 'realisation_statement_received_on', with: '20/05/2011'
+    select lender1.name, from: 'realisation_statement_received_lender_id'
+    fill_in 'realisation_statement_received_reference', with: "ABC123"
+    select 'March', from: 'realisation_statement_received_period_covered_quarter'
+    fill_in 'realisation_statement_received_period_covered_year', with: '2011'
+    fill_in 'realisation_statement_received_received_on', with: '20/05/2011'
     click_button 'Select Loans'
 
     click_button 'Realise Loans'
@@ -109,11 +109,11 @@ describe 'Realise loans' do
     loan = FactoryGirl.create(:loan, :recovered, id: 1, recovery_on: Date.new(2011, 2, 20))
 
     navigate_to_form # go back to form so new loan record lender is in form
-    select loan.lender.name, from: 'realisation_statement_lender_id'
-    fill_in 'realisation_statement_reference', with: "ABC123"
-    select 'March', from: 'realisation_statement_period_covered_quarter'
-    fill_in 'realisation_statement_period_covered_year', with: '2010'
-    fill_in 'realisation_statement_received_on', with: '20/05/2010'
+    select loan.lender.name, from: 'realisation_statement_received_lender_id'
+    fill_in 'realisation_statement_received_reference', with: "ABC123"
+    select 'March', from: 'realisation_statement_received_period_covered_quarter'
+    fill_in 'realisation_statement_received_period_covered_year', with: '2010'
+    fill_in 'realisation_statement_received_received_on', with: '20/05/2010'
     click_button 'Select Loans'
 
     page.should have_content('There are no recoveries to realise.')
@@ -130,11 +130,11 @@ describe 'Realise loans' do
   private
 
   def select_loans
-    select lender1.name, from: 'realisation_statement_lender_id'
-    fill_in 'realisation_statement_reference', with: "ABC123"
-    select 'March', from: 'realisation_statement_period_covered_quarter'
-    fill_in 'realisation_statement_period_covered_year', with: '2011'
-    fill_in 'realisation_statement_received_on', with: '20/05/2011'
+    select lender1.name, from: 'realisation_statement_received_lender_id'
+    fill_in 'realisation_statement_received_reference', with: "ABC123"
+    select 'March', from: 'realisation_statement_received_period_covered_quarter'
+    fill_in 'realisation_statement_received_period_covered_year', with: '2011'
+    fill_in 'realisation_statement_received_received_on', with: '20/05/2011'
     click_button 'Select Loans'
   end
 

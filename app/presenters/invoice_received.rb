@@ -23,10 +23,6 @@ class InvoiceReceived
     end
   end
 
-  def self.name
-    Invoice.name
-  end
-
   def lender_id
     lender && lender.id
   end

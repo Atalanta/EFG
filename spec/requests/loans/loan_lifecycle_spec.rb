@@ -183,11 +183,11 @@ describe 'Loan lifecycle' do
 
   def settle_loan(loan)
     click_link "Invoice Received"
-    select lender.name, from: 'invoice_lender_id'
-    fill_in 'invoice_reference', with: '2006-SADHJ'
-    select next_quarter_month_name(Date.current), from: 'invoice_period_covered_quarter'
-    fill_in 'invoice_period_covered_year', with: Date.current.year
-    fill_in 'invoice_received_on', with: Date.current.to_s(:screen)
+    select lender.name, from: 'invoice_received_lender_id'
+    fill_in 'invoice_received_reference', with: '2006-SADHJ'
+    select next_quarter_month_name(Date.current), from: 'invoice_received_period_covered_quarter'
+    fill_in 'invoice_received_period_covered_year', with: Date.current.year
+    fill_in 'invoice_received_received_on', with: Date.current.to_s(:screen)
     click_button "Select Loans"
 
     within("#settle_loan_#{loan.id}") do
@@ -199,11 +199,11 @@ describe 'Loan lifecycle' do
 
   def realise_recovery(loan)
     click_link "Recoveries Statement Received"
-    select lender.name, from: 'realisation_statement_lender_id'
-    fill_in 'realisation_statement_reference', with: "ABC123"
-    select next_quarter_month_name(Date.current), from: 'realisation_statement_period_covered_quarter'
-    fill_in 'realisation_statement_period_covered_year', with: Date.current.year
-    fill_in 'realisation_statement_received_on', with: Date.current.to_s(:screen)
+    select lender.name, from: 'realisation_statement_received_lender_id'
+    fill_in 'realisation_statement_received_reference', with: "ABC123"
+    select next_quarter_month_name(Date.current), from: 'realisation_statement_received_period_covered_quarter'
+    fill_in 'realisation_statement_received_period_covered_year', with: Date.current.year
+    fill_in 'realisation_statement_received_received_on', with: Date.current.to_s(:screen)
     click_button 'Select Loans'
 
     within "#realise_recovery_#{loan.recoveries.last.id}" do

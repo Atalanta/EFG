@@ -222,7 +222,7 @@ en:
         sort_postcode: Postcode
         sort_maturity_date: Maturity Date
 
-      invoice:
+      invoice_received:
         lender_id: Name of the Lender submitting the invoice?
         reference: What is the lender's invoice reference?
         period_covered_quarter: What is the Demand Invoice Period quarter end date?
@@ -239,7 +239,7 @@ en:
         additional_interest_accrued: 'If applicable, enter any additional amount payable to the Secretary of State in respect of interest accrued under a Scheme Facility after the Demand Date (as described in Schedule 2).'
         additional_break_costs: 'If applicable, enter any additional amount payable to the Secretary of State in respect of Break Costs under a Scheme Facility (as described in Schedule 2).'
 
-      realisation_statement:
+      realisation_statement_received:
         lender_id: Select lender
         reference: Lender's recoveries statement reference?
         period_covered_quarter: Select the recoveries statement period quarter end date?

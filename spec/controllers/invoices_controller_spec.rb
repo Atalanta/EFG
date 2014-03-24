@@ -45,7 +45,7 @@ describe InvoicesController do
       before do
         sign_in(current_user)
         dispatch(
-          invoice: {
+          invoice_received: {
             lender_id: lender.id,
             reference: '1',
             period_covered_quarter: "June",
