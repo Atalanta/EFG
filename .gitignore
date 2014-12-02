@@ -19,3 +19,10 @@ config/database.yml
 .DS_Store
 import_data/*
 brakeman-output.tabs
+*~
+*#
+.#*
+\#*#
+.*.sw[a-z]
+*.un~
+
